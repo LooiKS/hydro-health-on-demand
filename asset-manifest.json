@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/hydro-health-on-demand/static/css/main.8c76b04d.chunk.css",
+    "main.js": "/hydro-health-on-demand/static/js/main.5a0011e7.chunk.js",
+    "main.js.map": "/hydro-health-on-demand/static/js/main.5a0011e7.chunk.js.map",
+    "runtime~main.js": "/hydro-health-on-demand/static/js/runtime~main.435861c0.js",
+    "runtime~main.js.map": "/hydro-health-on-demand/static/js/runtime~main.435861c0.js.map",
+    "static/css/2.2d520bf0.chunk.css": "/hydro-health-on-demand/static/css/2.2d520bf0.chunk.css",
+    "static/js/2.9994ebd7.chunk.js": "/hydro-health-on-demand/static/js/2.9994ebd7.chunk.js",
+    "static/js/2.9994ebd7.chunk.js.map": "/hydro-health-on-demand/static/js/2.9994ebd7.chunk.js.map",
+    "index.html": "/hydro-health-on-demand/index.html",
+    "precache-manifest.9f1304f90d5e88c367e49fcbefb7871b.js": "/hydro-health-on-demand/precache-manifest.9f1304f90d5e88c367e49fcbefb7871b.js",
+    "service-worker.js": "/hydro-health-on-demand/service-worker.js",
+    "static/css/2.2d520bf0.chunk.css.map": "/hydro-health-on-demand/static/css/2.2d520bf0.chunk.css.map",
+    "static/css/main.8c76b04d.chunk.css.map": "/hydro-health-on-demand/static/css/main.8c76b04d.chunk.css.map"
+  }
+}

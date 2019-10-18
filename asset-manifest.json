@@ -1,17 +1,18 @@
 {
   "files": {
-    "main.css": "/hydro-health-on-demand/static/css/main.8c76b04d.chunk.css",
-    "main.js": "/hydro-health-on-demand/static/js/main.da4dafbb.chunk.js",
-    "main.js.map": "/hydro-health-on-demand/static/js/main.da4dafbb.chunk.js.map",
+    "main.css": "/hydro-health-on-demand/static/css/main.95648553.chunk.css",
+    "main.js": "/hydro-health-on-demand/static/js/main.922db3b3.chunk.js",
+    "main.js.map": "/hydro-health-on-demand/static/js/main.922db3b3.chunk.js.map",
     "runtime~main.js": "/hydro-health-on-demand/static/js/runtime~main.435861c0.js",
     "runtime~main.js.map": "/hydro-health-on-demand/static/js/runtime~main.435861c0.js.map",
     "static/css/2.544a67c8.chunk.css": "/hydro-health-on-demand/static/css/2.544a67c8.chunk.css",
-    "static/js/2.41530c80.chunk.js": "/hydro-health-on-demand/static/js/2.41530c80.chunk.js",
-    "static/js/2.41530c80.chunk.js.map": "/hydro-health-on-demand/static/js/2.41530c80.chunk.js.map",
+    "static/js/2.b2177230.chunk.js": "/hydro-health-on-demand/static/js/2.b2177230.chunk.js",
+    "static/js/2.b2177230.chunk.js.map": "/hydro-health-on-demand/static/js/2.b2177230.chunk.js.map",
     "index.html": "/hydro-health-on-demand/index.html",
-    "precache-manifest.9fe560b5166dc9457a150197f7389b15.js": "/hydro-health-on-demand/precache-manifest.9fe560b5166dc9457a150197f7389b15.js",
+    "precache-manifest.82374494cad0586793f64e86f84958d5.js": "/hydro-health-on-demand/precache-manifest.82374494cad0586793f64e86f84958d5.js",
     "service-worker.js": "/hydro-health-on-demand/service-worker.js",
     "static/css/2.544a67c8.chunk.css.map": "/hydro-health-on-demand/static/css/2.544a67c8.chunk.css.map",
-    "static/css/main.8c76b04d.chunk.css.map": "/hydro-health-on-demand/static/css/main.8c76b04d.chunk.css.map"
+    "static/css/main.95648553.chunk.css.map": "/hydro-health-on-demand/static/css/main.95648553.chunk.css.map",
+    "static/media/favicon.png": "/hydro-health-on-demand/static/media/favicon.942e51a6.png"
   }
 }

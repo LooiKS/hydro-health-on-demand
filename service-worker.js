@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/hydro-health-on-demand/precache-manifest.a1d7eaac0e38355065c37d8af4ef82d0.js"
+  "/hydro-health-on-demand/precache-manifest.1d174ae5e6aabb4fffdc77855ec97819.js"
 );
 
 self.addEventListener('message', (event) => {

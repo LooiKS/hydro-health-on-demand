@@ -297,7 +297,7 @@ class Home extends Component {
           Authorization: "Bearer" + " " + accessToken
         },
         body: JSON.stringify({
-          username: "utmgroup02@noreply.com",
+          username: "hydrohealthondemand@gmail.com",
           password: "teamh2o"
         })
       }
@@ -312,7 +312,7 @@ class Home extends Component {
     var baseURL =
       "https://cors-anywhere.herokuapp.com/https://iot.xpand.asia/developer/api/datamgt/v1/user/devicehistory?";
     var eventName = "Try";
-    var deviceIds = "16492";
+    var deviceIds = "20579";
     var noOfEvents = "7";
     var zoneId = "Asia%2FKuala_Lumpur";
     // var startDate = '2018-08-09%2012%3A00%3A00'

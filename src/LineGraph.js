@@ -16,13 +16,14 @@ class LineGraph extends Component {
     this.props.dataSelected.forEach(element => {
       line.push(
         <Line
-          key={element}
+          key={element.param}
           type="monotone"
-          dataKey={element}
-          stroke="#8884d8"
+          dataKey={element.param}
+          stroke={element.color}
         />
       );
     });
+    console.log("li", line);
     return (
       <LineChart width={1500} height={500} data={this.props.data}>
         {/* <CartesianGrid strokeDasharray="3 3" /> */}

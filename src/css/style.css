@@ -7,6 +7,7 @@ body {
   background-color: rgb(117, 207, 240);
   /*overflow: hidden;*/
   /*position: fixed;*/
+  overflow-x: hidden;
 }
 
 .recharts-cartesian-axis-tick {
@@ -169,6 +170,25 @@ body {
   -webkit-transform: rotateZ(-45deg);
   transform: rotateZ(-45deg);
 }
+
+.radial-progress-wrapper .wedge7,
+.radial-progress-wrapper .marker7 {
+  background: rgb(255, 100, 0);
+}
+
+.radial-progress-wrapper .radial-left-section .wedge7 {
+  -webkit-transform: rotateZ(-45deg);
+  transform: rotateZ(-45deg);
+}
+
+.radial-progress-wrapper .radial-right-section .wedge7 {
+  -webkit-transform: rotateZ(-181deg);
+  transform: rotateZ(-181deg);
+}
+.radial-progress-wrapper .marker7.end {
+  -webkit-transform: rotateZ(-45deg);
+  transform: rotateZ(-45deg);
+}
 .radial-section {
   position: absolute;
   top: 0;
@@ -226,6 +246,14 @@ body {
   transition: all 1s linear;
 }
 
+.wedge7 {
+  color: rgb(57, 255, 0);
+  background: rgb(98, 98, 98);
+  height: 180px;
+  width: 90px;
+  transition: all 1s linear;
+}
+
 .radial-left-section {
   left: 0;
 }
@@ -276,6 +304,15 @@ body {
 }
 
 .radial-left-section .wedge6 {
+  border-radius: 180px 0 0 180px;
+  -webkit-transform-origin: 90px 90px;
+  transform-origin: 90px 90px;
+  -webkit-transform: rotateZ(0deg);
+  transform: rotateZ(0deg);
+  transition-duration: 300ms;
+}
+
+.radial-left-section .wedge7 {
   border-radius: 180px 0 0 180px;
   -webkit-transform-origin: 90px 90px;
   transform-origin: 90px 90px;
@@ -350,6 +387,15 @@ body {
   transition-duration: 300ms;
 }
 
+.radial-right-section .wedge7 {
+  border-radius: 0 180px 180px 0;
+  left: 0;
+  -webkit-transform-origin: 0 50%;
+  transform-origin: 0 50%;
+  -webkit-transform: rotateZ(-90deg);
+  transform: rotateZ(-90deg);
+  transition-duration: 300ms;
+}
 .marker1 {
   background: rgb(98, 98, 98);
   border-radius: 50%;
@@ -434,6 +480,20 @@ body {
   transform: rotateZ(-180deg);
 }
 
+.marker7 {
+  background: rgb(98, 98, 98);
+  border-radius: 50%;
+  height: 12px;
+  width: 12px;
+  position: absolute;
+  top: 0;
+  left: calc(50% - 6px);
+  -webkit-transform-origin: 50% 90px;
+  transform-origin: 50% 90px;
+  -webkit-transform: rotateZ(-180deg);
+  transform: rotateZ(-180deg);
+}
+
 .marker1.end {
   -webkit-transform: rotateZ(90deg);
   transform: rotateZ(90deg);
@@ -465,6 +525,12 @@ body {
 }
 
 .marker6.end {
+  -webkit-transform: rotateZ(90deg);
+  transform: rotateZ(90deg);
+  transition: all 300ms linear;
+}
+
+.marker7.end {
   -webkit-transform: rotateZ(90deg);
   transform: rotateZ(90deg);
   transition: all 300ms linear;
@@ -626,6 +692,15 @@ body::-webkit-scrollbar-corner{
   /*left: 1225px;*/
 }
 
+.title7 {
+  color: white;
+  font-size: 0.8em;
+  display: inline-block;
+  position: relative;
+  top: 320px;
+  /*left: 1225px;*/
+}
+
 .value1 {
   color: #a4ba32;
   font-size: 2.1em;
@@ -673,6 +748,15 @@ body::-webkit-scrollbar-corner{
 
 .value6 {
   color: rgb(0, 189, 0);
+  font-size: 2.1em;
+  display: inline-block;
+  position: absolute;
+  top: 320px;
+  /*left: 1310px;*/
+}
+
+.value7 {
+  color: rgb(255, 100, 0);
   font-size: 2.1em;
   display: inline-block;
   position: absolute;
@@ -728,6 +812,15 @@ body::-webkit-scrollbar-corner{
 
 .unit_value6 {
   color: rgb(0, 189, 0);
+  /*font-size: 1.5em;*/
+  /*display: inline-block;*/
+  /*position: absolute;*/
+  /*top: 380px;*/
+  /*left: 1340px;*/
+}
+
+.unit_value7 {
+  color: rgb(255, 100, 0);
   /*font-size: 1.5em;*/
   /*display: inline-block;*/
   /*position: absolute;*/
@@ -819,22 +912,23 @@ body::-webkit-scrollbar-corner{
 /*                  KIAN SENG                        */
 .column {
   float: left;
-  width: 33.33%;
+  width: 25%;
   padding: 10px;
   height: 20%; /* Should be removed. Only for demonstration */
 }
 
 .param_upper_column {
   float: left;
-  flex: 33.33%;
+  flex: 25%;
   padding-right: 18vw;
   height: 20%; /* Should be removed. Only for demonstration */
   text-align: right;
+  width: 25%;
 }
 
 .param_lower_column {
   float: left;
-  flex: 33.33%;
+  flex: 25%;
   padding-right: 5vw;
   height: 20%; /* Should be removed. Only for demonstration */
   text-align: left;
@@ -842,7 +936,7 @@ body::-webkit-scrollbar-corner{
 
 .param_column {
   float: left;
-  flex: 33.33%;
+  flex: 25%;
   padding: 10px;
   height: 20%; /* Should be removed. Only for demonstration */
   text-align: right;
@@ -882,6 +976,7 @@ body {
   top: -2em;
   position: relative;
   display: flex;
+  transform: translate(25vw, 0px);
 }
 
 .lower_status_bar {
@@ -943,4 +1038,37 @@ body {
   font-size: 0.8em;
   text-align: center;
   transform: translate(-50px, -153px) rotateZ(-45deg);
+}
+
+.dropdown-toggle {
+  height: 100%;
+  position: absolute;
+}
+
+.dropdown-menu {
+  height: 9em;
+  overflow-y: scroll;
+}
+/* .mapboxgl-map {
+  position: relative;
+  z-index: -1;
+} */
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }

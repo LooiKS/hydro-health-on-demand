@@ -5,6 +5,7 @@
   "homepage": "https://LooiKS.github.io/hydro-health-on-demand",
   "dependencies": {
     "bootstrap": "^4.3.1",
+    "canvasjs": "^1.8.1",
     "cors-anywhere": "^0.4.1",
     "express": "^4.17.1",
     "gh-pages": "^2.1.1",

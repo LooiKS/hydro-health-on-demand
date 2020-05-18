@@ -10,10 +10,10 @@ import { xpandUrl, unit } from "./variable";
 var CanvasJS = CanvasJSReact.CanvasJS;
 var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
-window.onload = function() {
+window.onload = function () {
   console.log("loaded");
 
-  window.addEventListener("DOMContentLoaded", event => {
+  window.addEventListener("DOMContentLoaded", (event) => {
     console.log("cb loaded");
 
     ReactDOM.render({ HomeComp }, document.getElementById("root"));
@@ -74,7 +74,7 @@ class Monitor extends Component {
       this.setState({
         values: temp,
         response: result[xpandUrl.paramsDto.deviceIDs].reverse(),
-        isLoading: false
+        isLoading: false,
       });
       loading = false;
     }
@@ -92,7 +92,7 @@ class Monitor extends Component {
       "Turbidity",
       "pH",
       "Temperature",
-      "Ammonium"
+      "Ammonium",
     ],
     dataSelected: "tds",
     unit: ["μS", "mg/L", "mg/L", "NTU", "", "℃", "mg/L"],
@@ -109,7 +109,7 @@ class Monitor extends Component {
         time_s: "2019-09-11T00:22:07.788",
         oxygen: "8.8",
         mac_s: "3426465185477481",
-        wqi: "48.3"
+        wqi: "48.3",
       },
       {
         turbidity: "100.9",
@@ -122,7 +122,7 @@ class Monitor extends Component {
         time_s: "2019-09-11T00:13:21.675",
         oxygen: "9.1",
         mac_s: "3426465185477481",
-        wqi: "33.1"
+        wqi: "33.1",
       },
       {
         turbidity: "3.8",
@@ -135,7 +135,7 @@ class Monitor extends Component {
         time_s: "2019-05-24T20:19:08.374",
         oxygen: "7.3",
         mac_s: "3426465185477481",
-        wqi: "45.0"
+        wqi: "45.0",
       },
       {
         turbidity: "3.8",
@@ -148,7 +148,7 @@ class Monitor extends Component {
         time_s: "2019-05-24T20:17:58.550",
         oxygen: "3.5",
         mac_s: "3426465185477481",
-        wqi: "31.4"
+        wqi: "31.4",
       },
       {
         turbidity: "3.8",
@@ -161,7 +161,7 @@ class Monitor extends Component {
         time_s: "2019-05-24T18:23:21.451",
         oxygen: "7.1",
         mac_s: "3426465185477481",
-        wqi: "43.8"
+        wqi: "43.8",
       },
       {
         turbidity: "3.8",
@@ -174,7 +174,7 @@ class Monitor extends Component {
         time_s: "2019-05-24T18:22:14.911",
         oxygen: "7.0",
         mac_s: "3426465185477481",
-        wqi: "43.7"
+        wqi: "43.7",
       },
       {
         turbidity: "3.8",
@@ -187,8 +187,8 @@ class Monitor extends Component {
         time_s: "2019-05-24T18:21:08.038",
         oxygen: "7.1",
         mac_s: "3426465185477481",
-        wqi: "43.8"
-      }
+        wqi: "43.8",
+      },
     ],
     //   {
     // conductivity: "0.0",
@@ -208,45 +208,45 @@ class Monitor extends Component {
         marker: 0,
         left: 0,
         right: 0,
-        oldValue: 50
+        oldValue: 50,
       },
       oxygen: {
         marker: 0,
         left: 0,
         right: 0,
-        oldValue: 50
+        oldValue: 50,
       },
       tds: {
         marker: 0,
         left: 0,
         right: 0,
-        oldValue: 50
+        oldValue: 50,
       },
       turbidity: {
         marker: 0,
         left: 0,
         right: 0,
-        oldValue: 50
+        oldValue: 50,
       },
       ph: {
         marker: 0,
         left: 0,
         right: 0,
-        oldValue: 50
+        oldValue: 50,
       },
       temperature: {
         marker: 0,
         left: 0,
         right: 0,
-        oldValue: 50
+        oldValue: 50,
       },
       ammonium: {
         marker: 0,
         left: 0,
         right: 0,
-        oldValue: 50
-      }
-    }
+        oldValue: 50,
+      },
+    },
   };
 
   chart = "";
@@ -282,11 +282,11 @@ class Monitor extends Component {
     var dps = [];
     // for (var i = 0; i < noOfDps; i++) {
     //   yVal = yVal + Math.round(5 + Math.random() * (-5 - 5));
-    this.state.response.forEach(element => {
+    this.state.response.forEach((element) => {
       dps.push({
         // x: new Date(parseInt(element.timestamp_s, 10)),
         x: xVal,
-        y: Math.round(element.turbidity)
+        y: Math.round(element.turbidity),
       });
       xVal++;
     });
@@ -301,10 +301,10 @@ class Monitor extends Component {
     animationEnabled: true,
     zoomEnabled: true,
     title: {
-      text: ""
+      text: "",
     },
     axisX: {
-      labelFormatter: e => {
+      labelFormatter: (e) => {
         console.log("thi", e.value);
         if (
           Number.isInteger(e.value) &&
@@ -315,15 +315,15 @@ class Monitor extends Component {
             .replace("T", " ")
             .split(".")[0];
         else return "";
-      }
+      },
     },
     data: [
       {
         type: "spline",
         xValueFormatString: "MMM YY",
-        dataPoints: this.generateDataPoints(500)
-      }
-    ]
+        dataPoints: this.generateDataPoints(500),
+      },
+    ],
   };
 
   render() {
@@ -340,7 +340,7 @@ class Monitor extends Component {
             style={{
               backgroundColor: "black",
               zIndex: -1,
-              position: "relative"
+              position: "relative",
             }}
           >
             <div className="monitor_status_bar">
@@ -365,7 +365,7 @@ class Monitor extends Component {
                   marker_degree={this.state.values.conductivity.marker}
                   left_degree={this.state.values.conductivity.left}
                   right_degree={this.state.values.conductivity.right}
-                  onClick={res => {
+                  onClick={(res) => {
                     console.log(res);
                   }}
                 />
@@ -466,7 +466,7 @@ class Monitor extends Component {
             style={{
               backgroundColor: "black",
               margin: "auto",
-              textAlign: "center"
+              textAlign: "center",
             }}
           >
             <div>
@@ -479,56 +479,56 @@ class Monitor extends Component {
                   { param: unit.turbidity, color: "rgb(118, 139, 234)" }, //#ff00b5" },
                   { param: unit.ph, color: "rgb(57, 255, 0)" }, //#7a7cff" },
                   { param: unit.temperature, color: "rgb(0, 189, 0)" }, //#ffadb4" }
-                  { param: unit.ammonium, color: "rgb(255, 100, 0)" } //#ffadb4" }
+                  { param: unit.ammonium, color: "rgb(255, 100, 0)" }, //#ffadb4" }
                 ]}
                 // onRef={ref => (this.chart = ref)}
               />
               <Chart
                 data={this.state.response}
                 param={[
-                  { param: unit.wqi, color: "rgb(57, 255, 0)" } //#7a7cff" },
+                  { param: unit.wqi, color: "rgb(57, 255, 0)" }, //#7a7cff" },
                 ]}
                 // onRef={ref => (this.chart = ref)}
               />
               <Chart
                 data={this.state.response}
                 param={[
-                  { param: unit.ph, color: "rgb(57, 255, 0)" } //#7a7cff" },
+                  { param: unit.ph, color: "rgb(57, 255, 0)" }, //#7a7cff" },
                 ]}
                 // onRef={ref => (this.chart = ref)}
               />
               <Chart
                 data={this.state.response}
                 param={[
-                  { param: unit.temperature, color: "rgb(0, 189, 0)" } //#ffadb4" }
+                  { param: unit.temperature, color: "rgb(0, 189, 0)" }, //#ffadb4" }
                 ]}
                 // onRef={ref => (this.chart = ref)}
               />
               <Chart
                 data={this.state.response}
                 param={[
-                  { param: unit.tds, color: "rgb(255, 253, 213)" } //#00ffee" },
+                  { param: unit.tds, color: "rgb(255, 253, 213)" }, //#00ffee" },
                 ]}
                 // onRef={ref => (this.chart = ref)}
               />
               <Chart
                 data={this.state.response}
                 param={[
-                  { param: unit.oxygen, color: "rgb(0, 253, 213)" } //#aeff00" },
+                  { param: unit.oxygen, color: "rgb(0, 253, 213)" }, //#aeff00" },
                 ]}
                 // onRef={ref => (this.chart = ref)}
               />
               <Chart
                 data={this.state.response}
                 param={[
-                  { param: unit.ammonium, color: "rgb(255, 100, 0)" } //#ffadb4" }
+                  { param: unit.ammonium, color: "rgb(255, 100, 0)" }, //#ffadb4" }
                 ]}
                 // onRef={ref => (this.chart = ref)}
               />
               <Chart
                 data={this.state.response}
                 param={[
-                  { param: unit.conductivity, color: "#a4ba32" } //#f5de9f" },
+                  { param: unit.conductivity, color: "#a4ba32" }, //#f5de9f" },
                 ]}
 
                 // onRef={ref => (this.chart = ref)}
@@ -536,7 +536,7 @@ class Monitor extends Component {
               <Chart
                 data={this.state.response}
                 param={[
-                  { param: unit.turbidity, color: "rgb(118, 139, 234)" } //#ff00b5" },
+                  { param: unit.turbidity, color: "rgb(118, 139, 234)" }, //#ff00b5" },
                 ]}
                 // onRef={ref => (this.chart = ref)}
               />
@@ -610,49 +610,43 @@ class Monitor extends Component {
   }
 
   get_xpand(parameter, mode) {
-    fetch(
-      "http://localhost:8083/https://iot.xpand.asia/developer/api/applicationmgt/authenticate",
-      {
-        headers: {
-          "X-Secret":
-            "ZWR6QWltM2t5dHd4ZVNNcXYxYlpxa0hhcXpjYTpxN3hEdHBhd0NVTzk2a3VZcjdOMWlxXzkyYndh",
-          "Content-Type": "application/json"
-        },
-        signal: this.abortController.signal
-      }
-    )
-      .then(response => response.json())
-      .then(result => {
+    fetch("https://iot.xpand.asia/developer/api/applicationmgt/authenticate", {
+      headers: {
+        "X-Secret":
+          "ZWR6QWltM2t5dHd4ZVNNcXYxYlpxa0hhcXpjYTpxN3hEdHBhd0NVTzk2a3VZcjdOMWlxXzkyYndh",
+        "Content-Type": "application/json",
+      },
+      signal: this.abortController.signal,
+    })
+      .then((response) => response.json())
+      .then((result) => {
         this.xpandGetJWT(result.access_token, parameter, mode);
       });
   }
 
   xpandGetJWT(accessToken, parameter, mode, data) {
-    fetch(
-      "http://localhost:8083/https://iot.xpand.asia/developer/api/usermgt/v1/authenticate",
-      {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-          Authorization: "Bearer" + " " + accessToken
-        },
-        body: JSON.stringify({
-          username: "hydrohealthondemand@gmail.com",
-          password: "teamh2o"
-        }),
-        signal: this.abortController.signal
-      }
-    )
-      .then(response => response.json())
-      .then(result => {
+    fetch("https://iot.xpand.asia/developer/api/usermgt/v1/authenticate", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: "Bearer" + " " + accessToken,
+      },
+      body: JSON.stringify({
+        username: "hydrohealthondemand@gmail.com",
+        password: "teamh2o",
+      }),
+      signal: this.abortController.signal,
+    })
+      .then((response) => response.json())
+      .then((result) => {
         this.xpandGetData(result["X-IoT-JWT"], accessToken, parameter, data);
       });
   }
 
   xpandGetData(jwt, accessToken, parameter, data) {
     var baseURL =
-      "http://localhost:8083/https://iot.xpand.asia/developer/api/datamgt/v1/user/devicehistory?";
+      "https://iot.xpand.asia/developer/api/datamgt/v1/user/devicehistory?";
     var eventName = "WaterQuality";
     var deviceIds = "20579";
     var noOfEvents = "7";
@@ -675,16 +669,16 @@ class Monitor extends Component {
       {
         headers: {
           Authorization: "Bearer" + " " + accessToken,
-          "X-IoT-JWT": jwt
+          "X-IoT-JWT": jwt,
         },
-        signal: this.abortController.signal
+        signal: this.abortController.signal,
       }
     )
-      .then(response => {
+      .then((response) => {
         console.log(response);
         return response.json();
       })
-      .then(result => {
+      .then((result) => {
         console.log("*************************", result);
         var temp = this.state.values;
 
@@ -722,7 +716,7 @@ class Monitor extends Component {
         this.setState({
           values: temp,
           response: result[deviceIds].reverse(),
-          isLoading: false
+          isLoading: false,
         });
         loading = false;
       });

@@ -610,14 +610,17 @@ class Monitor extends Component {
   }
 
   get_xpand(parameter, mode) {
-    fetch("https://iot.xpand.asia/developer/api/applicationmgt/authenticate", {
-      headers: {
-        "X-Secret":
-          "ZWR6QWltM2t5dHd4ZVNNcXYxYlpxa0hhcXpjYTpxN3hEdHBhd0NVTzk2a3VZcjdOMWlxXzkyYndh",
-        "Content-Type": "application/json",
-      },
-      signal: this.abortController.signal,
-    })
+    fetch(
+      "http://localhost:8083/https://iot.xpand.asia/developer/api/applicationmgt/authenticate",
+      {
+        headers: {
+          "X-Secret":
+            "ZWR6QWltM2t5dHd4ZVNNcXYxYlpxa0hhcXpjYTpxN3hEdHBhd0NVTzk2a3VZcjdOMWlxXzkyYndh",
+          "Content-Type": "application/json",
+        },
+        signal: this.abortController.signal,
+      }
+    )
       .then((response) => response.json())
       .then((result) => {
         this.xpandGetJWT(result.access_token, parameter, mode);
@@ -625,19 +628,22 @@ class Monitor extends Component {
   }
 
   xpandGetJWT(accessToken, parameter, mode, data) {
-    fetch("https://iot.xpand.asia/developer/api/usermgt/v1/authenticate", {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-        Authorization: "Bearer" + " " + accessToken,
-      },
-      body: JSON.stringify({
-        username: "hydrohealthondemand@gmail.com",
-        password: "teamh2o",
-      }),
-      signal: this.abortController.signal,
-    })
+    fetch(
+      "http://localhost:8083/https://iot.xpand.asia/developer/api/usermgt/v1/authenticate",
+      {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          Authorization: "Bearer" + " " + accessToken,
+        },
+        body: JSON.stringify({
+          username: "hydrohealthondemand@gmail.com",
+          password: "teamh2o",
+        }),
+        signal: this.abortController.signal,
+      }
+    )
       .then((response) => response.json())
       .then((result) => {
         this.xpandGetData(result["X-IoT-JWT"], accessToken, parameter, data);
@@ -646,7 +652,7 @@ class Monitor extends Component {
 
   xpandGetData(jwt, accessToken, parameter, data) {
     var baseURL =
-      "https://iot.xpand.asia/developer/api/datamgt/v1/user/devicehistory?";
+      "http://localhost:8083/https://iot.xpand.asia/developer/api/datamgt/v1/user/devicehistory?";
     var eventName = "WaterQuality";
     var deviceIds = "20579";
     var noOfEvents = "7";

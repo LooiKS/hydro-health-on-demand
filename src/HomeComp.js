@@ -4,7 +4,7 @@ import {
   BrowserRouter as Router,
   Route,
   Link,
-  useHistory
+  useHistory,
 } from "react-router-dom";
 import ReactMapboxGl, { Layer, Feature, Popup, Marker } from "react-mapbox-gl";
 import TextBorder from "./TextBorder";
@@ -17,16 +17,16 @@ import { xpandUrl, unit } from "./variable";
 
 const Map = ReactMapboxGl({
   accessToken:
-    "pk.eyJ1IjoibG9vaWtpYW5zZW5nIiwiYSI6ImNqdWF3MzFrMzA2bmYzeXBkMGdkMTdsM2sifQ.SMkjjzrxv1Gwmf127YmGpA"
+    "pk.eyJ1IjoibG9vaWtpYW5zZW5nIiwiYSI6ImNqdWF3MzFrMzA2bmYzeXBkMGdkMTdsM2sifQ.SMkjjzrxv1Gwmf127YmGpA",
 });
 
 const center = [102.6715, 3.4177];
 const zoom = [6];
 let prevProps;
 
-export const HomeComp = props => {
+export const HomeComp = (props) => {
   // let routeHistory = useHistory();
-  window.onload = function() {
+  window.onload = function () {
     console.log("home reload");
   };
   const [location, setLocation] = useState({
@@ -38,28 +38,28 @@ export const HomeComp = props => {
         type: "scattermapbox",
         mode: "markers",
         state: "Safe",
-        response: []
+        response: [],
         // marker: indicate(float(xp.get_xpand("wqi", "data")), "color")"marker",
         // text: indicate(float(xp.get_xpand("wqi", "data")), "text")"text"
       },
-      {
-        lat: null,
-        lon: null,
-        name: "5G Ericsson KL",
-        type: "scattermapbox",
-        mode: "markers",
-        state: "",
-        response: []
-        // marker: indicate(float(xp.get_xpand("wqi", "data")), "color")"marker",
-        // text: indicate(float(xp.get_xpand("wqi", "data")), "text")"text"
-      },
+      // {
+      //   lat: null,
+      //   lon: null,
+      //   name: "5G Ericsson KL",
+      //   type: "scattermapbox",
+      //   mode: "markers",
+      //   state: "",
+      //   response: []
+      //   // marker: indicate(float(xp.get_xpand("wqi", "data")), "color")"marker",
+      //   // text: indicate(float(xp.get_xpand("wqi", "data")), "text")"text"
+      // },
       {
         lat: 1.555145,
         lon: 103.63764,
         name: "UTM JB Lake",
         type: "scattermapbox",
         mode: "markers",
-        state: "Safe"
+        state: "Safe",
         // marker: indicate(40, "color")"marker",
         // text: indicate(40, "text")"text"
       },
@@ -69,7 +69,7 @@ export const HomeComp = props => {
         name: "Sungai Kim Kim",
         type: "scattermapbox",
         mode: "markers",
-        state: "Safe"
+        state: "Safe",
         // marker: indicate(0, "color")"marker",
         // text: indicate(0, "text")"text"
       },
@@ -79,7 +79,7 @@ export const HomeComp = props => {
         name: "Sungai Tiram",
         type: "scattermapbox",
         mode: "markers",
-        state: "Safe"
+        state: "Safe",
         // marker: indicate(30, "color")"marker",
         // text: indicate(30, "text")"text"
       },
@@ -89,7 +89,7 @@ export const HomeComp = props => {
         name: "Sungai Langat",
         type: "scattermapbox",
         mode: "markers",
-        state: "Safe"
+        state: "Safe",
         // marker: indicate(30, "color")"marker",
         // text: indicate(30, "text")"text"
       },
@@ -99,7 +99,7 @@ export const HomeComp = props => {
         name: "Sungai Pahang",
         type: "scattermapbox",
         mode: "markers",
-        state: "Extremely Polluted"
+        state: "Extremely Polluted",
         // marker: indicate(40, "color")"marker",
         // text: indicate(40, "text")"text"
       },
@@ -109,7 +109,7 @@ export const HomeComp = props => {
         name: "Sungai Malacca",
         type: "scattermapbox",
         mode: "markers",
-        state: "Polluted"
+        state: "Polluted",
         // marker: indicate(0, "color")"marker",
         // text: indicate(0, "text")"text"
       },
@@ -119,11 +119,21 @@ export const HomeComp = props => {
         name: "Sungai Kinta",
         type: "scattermapbox",
         mode: "markers",
-        state: "Polluted"
+        state: "Polluted",
         // marker: indicate(40, "color")"marker",
         // text: indicate(40, "text")"text"
-      }
-    ]
+      },
+      {
+        lat: 1.499313,
+        lon: 103.685027,
+        name: "Sungai Skudai",
+        type: "scattermapbox",
+        mode: "markers",
+        state: "Polluted",
+        // marker: indicate(40, "color")"marker",
+        // text: indicate(40, "text")"text"
+      },
+    ],
   });
   const [popup, setPopup] = useState(false);
   const [popupText, setPopupText] = useState("");
@@ -271,7 +281,7 @@ export const HomeComp = props => {
     let layer = [];
     let side = [];
     let color = "";
-    location.location.forEach(element => {
+    location.location.forEach((element) => {
       console.log(element.state);
 
       if (element.state === "Safe") {
@@ -288,7 +298,7 @@ export const HomeComp = props => {
         <Marker
           key={element.name}
           properties={{
-            description: "<strong>" + element.name + "</strong>"
+            description: "<strong>" + element.name + "</strong>",
           }}
           coordinates={[element.lon, element.lat]}
           anchor="bottom"
@@ -298,16 +308,16 @@ export const HomeComp = props => {
           // console.log("mouse click", mapWithEvt);
           // routeHistory.push("/monitor");
 
-          onMouseEnter={mapWithEvt => {
+          onMouseEnter={(mapWithEvt) => {
             console.log("mouse enter", mapWithEvt);
 
             setPopup({
               lat: element.lat,
               lon: element.lon,
-              description: "<strong>" + element.name + "</strong>"
+              description: "<strong>" + element.name + "</strong>",
             });
           }}
-          onMouseLeave={mapWithEvt => {
+          onMouseLeave={(mapWithEvt) => {
             console.log("mouse leave", mapWithEvt);
             setPopup(false);
           }}
@@ -322,7 +332,7 @@ export const HomeComp = props => {
               width: 1 + "em",
               height: 1 + "em",
               backgroundColor: color,
-              borderRadius: 50 + "%"
+              borderRadius: 50 + "%",
             }}
           ></div>
         </Marker>
@@ -332,7 +342,7 @@ export const HomeComp = props => {
     });
     console.log("layer", layer);
 
-    layer.forEach(element => {
+    layer.forEach((element) => {
       if (element.key === "JB Sutera Mall") console.log("layerr", element);
     });
 
@@ -342,7 +352,7 @@ export const HomeComp = props => {
   const createSide = () => {
     let side = [];
     let color = "";
-    location.location.forEach(element => {
+    location.location.forEach((element) => {
       if (element.state === "Safe") {
         color = "green";
       } else if (element.state === "Polluted") {
@@ -356,14 +366,14 @@ export const HomeComp = props => {
           style={{
             display: "flex",
             fontSize: "0.5em",
-            cursor: "pointer"
+            cursor: "pointer",
           }}
           onClick={() => {
             map.flyTo({ center: [element.lon, element.lat] });
             setPopup({
               lat: element.lat,
               lon: element.lon,
-              description: "<strong>" + element.name + "</strong>"
+              description: "<strong>" + element.name + "</strong>",
             });
           }}
         >
@@ -374,7 +384,7 @@ export const HomeComp = props => {
               height: 1 + "em",
               backgroundColor: color,
               borderRadius: 50 + "%",
-              transform: "translateY(25%)"
+              transform: "translateY(25%)",
             }}
           ></div>
           <div>{element.name}</div>
@@ -426,16 +436,16 @@ export const HomeComp = props => {
     setResponse(params[xpandUrl.paramsDto.deviceIDs]);
     setIsLoading(false);
     let temp = location;
-    temp.location.forEach(element => {
-      if (element.name === "5G Ericsson KL") {
+    temp.location.forEach((element) => {
+      if (element.name === "Sungai Skudai") {
         if (element.lat === null) {
-          console.log("5G Ericsson KL", props);
+          console.log("Sungai Skudai", props);
           element.lat = 3.172788;
           //            props.location[xpandUrl.paramsDto.deviceIDs][0].latitude;
           element.lon = 101.719556;
           //            props.location[xpandUrl.paramsDto.deviceIDs][0].longitude;
         }
-        console.log("5G Ericsson KL", params);
+        console.log("Sungai Skudai", params);
 
         element.state =
           params[xpandUrl.paramsDto.deviceIDs][0][unit.wqi.key] >= 40
@@ -450,7 +460,7 @@ export const HomeComp = props => {
       pollutedCountTemp = 0,
       extremelyPollutedCountTemp = 0;
 
-    location.location.forEach(element => {
+    location.location.forEach((element) => {
       console.log(element.name, element.state);
       element.state === "Safe"
         ? safeCountTemp++
@@ -465,29 +475,29 @@ export const HomeComp = props => {
   }
 
   const row = {
-    display: "flex"
+    display: "flex",
   };
 
   const column = {
-    width: "33.33%"
+    width: "33.33%",
   };
 
   const borderDiv = {
     border: "2px black solid",
-    margin: "1vh 2.5vw"
+    margin: "1vh 2.5vw",
   };
 
   const mapContainer = {
     // border: "5px blue solid",
     width: "100%",
-    display: "-webkit-inline-box"
+    display: "-webkit-inline-box",
   };
 
   const title = {
     fontFamily: "Comic Sans MS",
     fontSize: "1em",
     textAlign: "left",
-    paddingLeft: "1.5em"
+    paddingLeft: "1.5em",
   };
 
   return isLoading ? (
@@ -526,7 +536,7 @@ export const HomeComp = props => {
       <div style={{ display: "flex" }}>
         <div style={mapContainer}>
           <Map
-            onStyleLoad={map => {
+            onStyleLoad={(map) => {
               setMap(map);
               console.log("mappppp", map);
             }}
@@ -535,7 +545,7 @@ export const HomeComp = props => {
             containerStyle={{
               height: "65vh",
               width: "100vw",
-              display: "table-cell"
+              display: "table-cell",
             }}
             center={center}
             onClick={(map, e) => console.log("onClickMap!", e.lngLat)}
@@ -547,12 +557,12 @@ export const HomeComp = props => {
                 offset={{
                   "bottom-left": [12, 0],
                   bottom: [0, -10],
-                  "bottom-right": [-12, -38]
+                  "bottom-right": [-12, -38],
                 }}
               >
                 <div
                   dangerouslySetInnerHTML={{
-                    __html: popup.description
+                    __html: popup.description,
                   }}
                 />
               </Popup>

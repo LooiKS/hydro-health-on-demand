@@ -5,13 +5,13 @@ export async function get_xpand(mode) {
   return await fetch(xpandUrl.proxy + xpandUrl.xpandAuth, {
     headers: {
       "X-Secret": xpandUrl.xSecret,
-      "Content-Type": "application/json"
-    }
+      "Content-Type": "application/json",
+    },
     // signal: signal
   })
-    .then(response => response.json())
-    .then(result => {
-      return xpandGetJWT(result.access_token, mode).then(x => {
+    .then((response) => response.json())
+    .then((result) => {
+      return xpandGetJWT(result.access_token, mode).then((x) => {
         return x;
       });
     });
@@ -23,17 +23,17 @@ async function xpandGetJWT(accessToken, mode) {
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
-      Authorization: "Bearer" + " " + accessToken
+      Authorization: "Bearer" + " " + accessToken,
     },
     body: JSON.stringify({
       username: xpandUrl.userName,
-      password: xpandUrl.password
-    })
+      password: xpandUrl.password,
+    }),
     // signal: signal
   })
-    .then(response => response.json())
-    .then(result => {
-      return xpandGetData(result["X-IoT-JWT"], accessToken, mode).then(x => {
+    .then((response) => response.json())
+    .then((result) => {
+      return xpandGetData(result["X-IoT-JWT"], accessToken, mode).then((x) => {
         return x;
       });
     });
@@ -78,15 +78,15 @@ async function xpandGetData(jwt, accessToken, mode) {
     {
       headers: {
         Authorization: "Bearer" + " " + accessToken,
-        "X-IoT-JWT": jwt
-      }
+        "X-IoT-JWT": jwt,
+      },
       //   signal: signal
     }
   )
-    .then(response => {
+    .then((response) => {
       return response.json();
     })
-    .then(result => {
+    .then((result) => {
       var finalResult;
       //   setResponse(result[deviceIds]);
       //   setIsLoading(false);
@@ -121,10 +121,10 @@ async function xpandGetData(jwt, accessToken, mode) {
       console.log("resultt", result);
 
       finalResult = {
-        params: result
+        params: result,
       };
       if (mode === "init") {
-        return getLocation(accessToken, jwt).then(locationFetch => {
+        return getLocation(accessToken, jwt).then((locationFetch) => {
           finalResult.location = locationFetch;
           return finalResult;
         });
@@ -151,15 +151,15 @@ async function getLocation(accessToken, jwt) {
     {
       headers: {
         Authorization: "Bearer" + " " + accessToken,
-        "X-IoT-JWT": jwt
-      }
+        "X-IoT-JWT": jwt,
+      },
       // signal: signal
     }
   )
-    .then(response => {
+    .then((response) => {
       return response.json();
     })
-    .then(location => {
+    .then((location) => {
       return location;
     });
 }

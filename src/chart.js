@@ -18,11 +18,11 @@ class Chart extends Component {
     var xVal = 1;
     var dps = [];
     console.log("received", param);
-    this.props.data.forEach(element => {
+    this.props.data.forEach((element) => {
       console.log("element[param]", element[param], element, param);
       dps.push({
         x: xVal,
-        y: parseFloat(element[param], 10)
+        y: parseFloat(element[param], 10),
       });
       xVal++;
     });
@@ -32,7 +32,7 @@ class Chart extends Component {
   generateData() {
     let data = [];
     console.log("param", this.props.param);
-    this.props.param.forEach(element => {
+    this.props.param.forEach((element) => {
       console.log("loopchart", element, element.param);
       data.push({
         type: "spline",
@@ -42,7 +42,7 @@ class Chart extends Component {
         legendText: element.param.title,
         lineColor: element.color,
         markerColor: element.color,
-        dataPoints: this.generateDataPoints(element.param.key)
+        dataPoints: this.generateDataPoints(element.param.key),
       });
     });
     return data;
@@ -57,30 +57,37 @@ class Chart extends Component {
       text:
         this.props.param.length > 1
           ? "Overall"
-          : this.props.param[0].param.title
+          : this.props.param[0].param.title,
     },
     axisX: {
       title: "Date",
-      labelFormatter: e => {
+      labelFormatter: (e) => {
         console.log("thi", e.value);
         if (
           Number.isInteger(e.value) &&
           e.value <= this.props.data.length &&
           e.value > 0
-        )
+        ) {
           return this.props.data[e.value - 1].time_s
             .replace("T", " ")
             .split(".")[0];
-        else return "";
-      }
+          // let time = this.props.data[e.value - 1].time;
+          // return `${time.substr(0, 4)}-${time.substr(4, 2)}-${time.substr(
+          //   6,
+          //   2
+          // )} ${time.substr(8, 2)}:${time.substr(10, 2)}:${time.substr(12, 2)}`;
+        } else return "";
+      },
     },
     axisY: {
       includeZero: false,
       gridColor: "black",
       title:
-        this.props.param.length > 1 ? "Overall" : this.props.param[0].param.unit
+        this.props.param.length > 1
+          ? "Overall"
+          : this.props.param[0].param.unit,
     },
-    data: this.generateData()
+    data: this.generateData(),
   };
 
   render() {
@@ -95,7 +102,7 @@ class Chart extends Component {
         <hr></hr>
         <CanvasJSChart
           options={this.options}
-          onRef={ref => (this.chart = ref)}
+          onRef={(ref) => (this.chart = ref)}
         />
       </div>
     );

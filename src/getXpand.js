@@ -1,7 +1,7 @@
 import { xpandUrl } from "./variable";
 
 export async function get_xpand(mode) {
-  console.log(xpandUrl.proxy + xpandUrl.xpandAuth);
+  // console.log(xpandUrl.proxy + xpandUrl.xpandAuth);
   return await fetch(xpandUrl.proxy + xpandUrl.xpandAuth, {
     headers: {
       "X-Secret": xpandUrl.xSecret,
@@ -107,7 +107,7 @@ async function xpandGetData(jwt, accessToken, mode) {
       //     extremelyPollutedCountTemp = 0;
 
       //   location.location.forEach(element => {
-      //     console.log(element.name, element.state);
+      //     // console.log(element.name, element.state);
       //     element.state === "Safe"
       //       ? safeCountTemp++
       //       : element.state === "Polluted"
@@ -118,7 +118,7 @@ async function xpandGetData(jwt, accessToken, mode) {
       //   setPollutedCount(pollutedCountTemp);
       //   setExtremelyPollutedCount(extremelyPollutedCountTemp);
       //   setLoading(false);
-      console.log("resultt", result);
+      // console.log("resultt", result);
 
       finalResult = {
         params: result,
@@ -129,7 +129,7 @@ async function xpandGetData(jwt, accessToken, mode) {
           return finalResult;
         });
       }
-      console.log("return lo");
+      // console.log("return lo");
       return finalResult;
     });
 }

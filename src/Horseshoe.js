@@ -2,14 +2,17 @@ import React, { Component } from "react";
 
 class Horseshoe extends Component {
   componentWillMount() {
-    console.log(this.props.num);
+    // console.log(this.props.num);
   }
 
   render() {
     return (
       <div
         className={
-          "param_" + (this.props.num < 4 ? "upper" : "lower") + "_column"
+          "param_" +
+          (this.props.num < 4 ? "upper" : "lower") +
+          "_column1 " +
+          " col-3"
         }
       >
         <div className="horseshoe_upper_wrapper">
@@ -42,7 +45,7 @@ class Horseshoe extends Component {
                   style={{
                     WebkitTransform:
                       "rotateZ(" + this.props.right_degree + "deg)",
-                    transform: "rotateZ(" + this.props.right_degree + "deg)"
+                    transform: "rotateZ(" + this.props.right_degree + "deg)",
                   }}
                 ></div>
               </div>
@@ -53,7 +56,7 @@ class Horseshoe extends Component {
                   style={{
                     WebkitTransform:
                       "rotateZ(" + this.props.left_degree + "deg)",
-                    transform: "rotateZ(" + this.props.left_degree + "deg)"
+                    transform: "rotateZ(" + this.props.left_degree + "deg)",
                   }}
                 ></div>
               </div>
@@ -64,7 +67,7 @@ class Horseshoe extends Component {
                 style={{
                   WebkitTransform:
                     "rotateZ(" + this.props.marker_degree + "deg)",
-                  transform: "rotateZ(" + this.props.marker_degree + "deg)"
+                  transform: "rotateZ(" + this.props.marker_degree + "deg)",
                 }}
               ></div>
             </div>

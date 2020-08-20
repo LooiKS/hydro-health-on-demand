@@ -976,13 +976,15 @@ body {
   top: -2em;
   position: relative;
   display: flex;
-  transform: translate(25vw, 0px);
+  transform: translate(10vw, 0px);
+  margin-bottom: -6em;
 }
 
 .lower_status_bar {
   top: -9em;
   position: relative;
   display: flex;
+  margin-bottom: -6em;
 }
 
 .status_bar {
@@ -990,7 +992,7 @@ body {
 }
 
 .monitor_status_bar {
-  margin-bottom: -13em;
+  /* margin-bottom: -13em; */
   background-color: black;
   overflow: hidden;
 }

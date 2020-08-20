@@ -16,7 +16,7 @@ function App() {
       return res.json();
     })
     .then((re) => {
-      console.log(re);
+      // // console.log(re);
     });
   return <Main />;
 }
@@ -27,28 +27,28 @@ const Main = () => {
   const [params, setParams] = useState();
   const [loc, setLoc] = useState();
   useEffect(() => {
-    // console.log(typeof location);
+    // // console.log(typeof location);
     get_xpand("init").then((result) => {
-      console.log("result app:", result.location);
+      // console.log("result app:", result.location);
       setLoc(result.location);
       setParams(result);
-      console.log("App", loc);
+      // console.log("App", loc);
       // setLocValue(result.location);
       // setParamValue(result.params);
     });
     // setLoading(true);
     lookupInterval = setInterval(() => {
-      console.log("out11 app"); //, loading);
+      // console.log("out11 app"); //, loading);
       // if (!loading) {
       // setLoading(false);
 
       get_xpand().then((result) => {
-        console.log("loop", result);
+        // console.log("loop", result);
         setParams(result);
       });
-      // console.log("in111");
+      // // console.log("in111");
       // }
-    }, 5000);
+    }, 500000);
 
     return function cleanup() {
       // abortController.abort();
@@ -93,7 +93,7 @@ const Main = () => {
   }
 
   window.onload = function () {
-    console.log("app loaded");
+    // console.log("app loaded");
   };
 
   function monitorButton() {
@@ -109,7 +109,7 @@ const Main = () => {
         </button>
       );
     });
-    // console.log(btn);
+    // // console.log(btn);
     return btn;
   }
 

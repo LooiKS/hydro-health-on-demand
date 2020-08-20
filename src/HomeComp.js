@@ -27,7 +27,7 @@ let prevProps;
 export const HomeComp = (props) => {
   // let routeHistory = useHistory();
   window.onload = function () {
-    console.log("home reload");
+    // console.log("home reload");
   };
   const [location, setLocation] = useState({
     location: [
@@ -150,7 +150,7 @@ export const HomeComp = (props) => {
   const [map, setMap] = useState();
   const [side, setSide] = useState();
   // function get_xpand(parameter, mode) {
-  //   console.log(xpandUrl.proxy + xpandUrl.xpandAuth);
+  //   // console.log(xpandUrl.proxy + xpandUrl.xpandAuth);
   //   fetch(xpandUrl.proxy + xpandUrl.xpandAuth, {
   //     headers: {
   //       "X-Secret": xpandUrl.xSecret,
@@ -216,7 +216,7 @@ export const HomeComp = (props) => {
   //       return response.json();
   //     })
   //     .then(result => {
-  //       console.log("result11: ", result);
+  //       // console.log("result11: ", result);
   //       setResponse(result[deviceIds]);
   //       setIsLoading(false);
   //       let temp = location;
@@ -236,7 +236,7 @@ export const HomeComp = (props) => {
   //         extremelyPollutedCountTemp = 0;
 
   //       location.location.forEach(element => {
-  //         console.log(element.name, element.state);
+  //         // console.log(element.name, element.state);
   //         element.state === "Safe"
   //           ? safeCountTemp++
   //           : element.state === "Polluted"
@@ -272,7 +272,7 @@ export const HomeComp = (props) => {
   //           return response.json();
   //         })
   //         .then(location => {
-  //           console.log("location", location);
+  //           // console.log("location", location);
   //         });
   //     });
   // }
@@ -282,7 +282,7 @@ export const HomeComp = (props) => {
     let side = [];
     let color = "";
     location.location.forEach((element) => {
-      console.log(element.state);
+      // console.log(element.state);
 
       if (element.state === "Safe") {
         color = "green";
@@ -292,7 +292,7 @@ export const HomeComp = (props) => {
         color = "red";
       }
 
-      console.log(color);
+      // console.log(color);
       // layer.push(<Layer />);
       layer.push(
         <Marker
@@ -305,11 +305,11 @@ export const HomeComp = (props) => {
           onClick={() => {
             props.handler(element.name);
           }}
-          // console.log("mouse click", mapWithEvt);
+          // // console.log("mouse click", mapWithEvt);
           // routeHistory.push("/monitor");
 
           onMouseEnter={(mapWithEvt) => {
-            console.log("mouse enter", mapWithEvt);
+            // console.log("mouse enter", mapWithEvt);
 
             setPopup({
               lat: element.lat,
@@ -318,7 +318,7 @@ export const HomeComp = (props) => {
             });
           }}
           onMouseLeave={(mapWithEvt) => {
-            console.log("mouse leave", mapWithEvt);
+            // console.log("mouse leave", mapWithEvt);
             setPopup(false);
           }}
         >
@@ -340,10 +340,10 @@ export const HomeComp = (props) => {
         // />
       );
     });
-    console.log("layer", layer);
+    // console.log("layer", layer);
 
     layer.forEach((element) => {
-      if (element.key === "JB Sutera Mall") console.log("layerr", element);
+      // if (element.key === "JB Sutera Mall") // console.log("layerr", element);
     });
 
     return layer;
@@ -352,7 +352,7 @@ export const HomeComp = (props) => {
   const createSide = () => {
     let side = [];
     let color = "";
-    location.location.forEach((element) => {
+    location.location.forEach((element, i) => {
       if (element.state === "Safe") {
         color = "green";
       } else if (element.state === "Polluted") {
@@ -363,6 +363,7 @@ export const HomeComp = (props) => {
 
       side.push(
         <div
+          key={i}
           style={{
             display: "flex",
             fontSize: "0.5em",
@@ -394,10 +395,10 @@ export const HomeComp = (props) => {
     return side;
   };
   let lookupInterval = "";
-  console.log("out homecomp1");
+  // console.log("out homecomp1");
 
   if (prevProps != props) {
-    console.log("homecomp1", props);
+    // console.log("homecomp1", props);
     if (props.params !== undefined) {
       setParamValue(props.params.params);
     }
@@ -405,24 +406,21 @@ export const HomeComp = (props) => {
   }
 
   useEffect(() => {
-    console.log("homecomp1");
-
+    // console.log("homecomp1");
     // get_xpand("init").then(result => {
-    //   console.log("result:", result);
+    //   // console.log("result:", result);
     //   setLocValue(result.location);
     //   setParamValue(result.params);
     // });
     // setLoading(true);
     // lookupInterval = setInterval(() => {
-    //   console.log("out11", loading);
+    //   // console.log("out11", loading);
     //   if (!loading) {
     //     setLoading(false);
-
     //     get_xpand();
-    //     console.log("in111");
+    //     // console.log("in111");
     //   }
     // }, 5000);
-
     // return function cleanup() {
     //   abortController.abort();
     //   clearInterval(lookupInterval);
@@ -432,20 +430,20 @@ export const HomeComp = (props) => {
   function setLocValue(location) {}
 
   function setParamValue(params) {
-    console.log("homecomp1 p", params);
+    // console.log("homecomp1 p", params);
     setResponse(params[xpandUrl.paramsDto.deviceIDs]);
     setIsLoading(false);
     let temp = location;
     temp.location.forEach((element) => {
       if (element.name === "Sungai Skudai") {
         if (element.lat === null) {
-          console.log("Sungai Skudai", props);
+          // console.log("Sungai Skudai", props);
           element.lat = 3.172788;
           //            props.location[xpandUrl.paramsDto.deviceIDs][0].latitude;
           element.lon = 101.719556;
           //            props.location[xpandUrl.paramsDto.deviceIDs][0].longitude;
         }
-        console.log("Sungai Skudai", params);
+        // console.log("Sungai Skudai", params);
 
         element.state =
           params[xpandUrl.paramsDto.deviceIDs][0][unit.wqi.key] >= 40
@@ -461,7 +459,7 @@ export const HomeComp = (props) => {
       extremelyPollutedCountTemp = 0;
 
     location.location.forEach((element) => {
-      console.log(element.name, element.state);
+      // console.log(element.name, element.state);
       element.state === "Safe"
         ? safeCountTemp++
         : element.state === "Polluted"
@@ -538,7 +536,7 @@ export const HomeComp = (props) => {
           <Map
             onStyleLoad={(map) => {
               setMap(map);
-              console.log("mappppp", map);
+              // console.log("mappppp", map);
             }}
             zoom={zoom}
             style="mapbox://styles/mapbox/streets-v9"
@@ -548,7 +546,7 @@ export const HomeComp = (props) => {
               display: "table-cell",
             }}
             center={center}
-            onClick={(map, e) => console.log("onClickMap!", e.lngLat)}
+            // onClick={(map, e) => // console.log("onClickMap!", e.lngLat)}
           >
             {popup ? (
               <Popup

@@ -7,13 +7,13 @@ import {
   CartesianGrid,
   Tooltip,
   Legend,
-  Label
+  Label,
 } from "recharts";
 
 class LineGraph extends Component {
   render() {
     let line = [];
-    this.props.dataSelected.forEach(element => {
+    this.props.dataSelected.forEach((element) => {
       line.push(
         <Line
           key={element.param}
@@ -23,7 +23,7 @@ class LineGraph extends Component {
         />
       );
     });
-    console.log("li", line);
+    // console.log("li", line);
     return (
       <LineChart width={1500} height={500} data={this.props.data}>
         {/* <CartesianGrid strokeDasharray="3 3" /> */}

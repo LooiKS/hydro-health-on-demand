@@ -3,7 +3,7 @@ import {
   BrowserRouter as Router,
   Route,
   Link,
-  useHistory
+  useHistory,
 } from "react-router-dom";
 
 // ES6
@@ -16,7 +16,7 @@ import ReactMapboxGl, { Layer, Feature, Popup, Marker } from "react-mapbox-gl";
 
 const Map = ReactMapboxGl({
   accessToken:
-    "pk.eyJ1IjoibG9vaWtpYW5zZW5nIiwiYSI6ImNqdWF3MzFrMzA2bmYzeXBkMGdkMTdsM2sifQ.SMkjjzrxv1Gwmf127YmGpA"
+    "pk.eyJ1IjoibG9vaWtpYW5zZW5nIiwiYSI6ImNqdWF3MzFrMzA2bmYzeXBkMGdkMTdsM2sifQ.SMkjjzrxv1Gwmf127YmGpA",
 });
 
 const markerUrl = "logo.svg";
@@ -31,7 +31,7 @@ class Home extends Component {
         type: "scattermapbox",
         mode: "markers",
         state: "",
-        response: []
+        response: [],
         // marker: indicate(float(xp.get_xpand("wqi", "data")), "color")"marker",
         // text: indicate(float(xp.get_xpand("wqi", "data")), "text")"text"
       },
@@ -41,7 +41,7 @@ class Home extends Component {
         name: "UTM JB Lake",
         type: "scattermapbox",
         mode: "markers",
-        state: "Safe"
+        state: "Safe",
         // marker: indicate(40, "color")"marker",
         // text: indicate(40, "text")"text"
       },
@@ -51,7 +51,7 @@ class Home extends Component {
         name: "Sungai Kim Kim",
         type: "scattermapbox",
         mode: "markers",
-        state: "Safe"
+        state: "Safe",
         // marker: indicate(0, "color")"marker",
         // text: indicate(0, "text")"text"
       },
@@ -61,7 +61,7 @@ class Home extends Component {
         name: "Sungai Tiram",
         type: "scattermapbox",
         mode: "markers",
-        state: "Safe"
+        state: "Safe",
         // marker: indicate(30, "color")"marker",
         // text: indicate(30, "text")"text"
       },
@@ -71,7 +71,7 @@ class Home extends Component {
         name: "Sungai Langat",
         type: "scattermapbox",
         mode: "markers",
-        state: "Safe"
+        state: "Safe",
         // marker: indicate(30, "color")"marker",
         // text: indicate(30, "text")"text"
       },
@@ -81,7 +81,7 @@ class Home extends Component {
         name: "Sungai Pahang",
         type: "scattermapbox",
         mode: "markers",
-        state: "Extremely Polluted"
+        state: "Extremely Polluted",
         // marker: indicate(40, "color")"marker",
         // text: indicate(40, "text")"text"
       },
@@ -91,7 +91,7 @@ class Home extends Component {
         name: "Sungai Malacca",
         type: "scattermapbox",
         mode: "markers",
-        state: "Polluted"
+        state: "Polluted",
         // marker: indicate(0, "color")"marker",
         // text: indicate(0, "text")"text"
       },
@@ -101,15 +101,15 @@ class Home extends Component {
         name: "Sungai Kinta",
         type: "scattermapbox",
         mode: "markers",
-        state: "Polluted"
+        state: "Polluted",
         // marker: indicate(40, "color")"marker",
         // text: indicate(40, "text")"text"
-      }
+      },
     ],
     gotPopUp: false,
     popupText: "",
     response: [],
-    isLoading: true
+    isLoading: true,
   };
 
   componentWillMount() {
@@ -121,7 +121,7 @@ class Home extends Component {
 
     let layer = [];
     let color = "";
-    this.state.location.forEach(element => {
+    this.state.location.forEach((element) => {
       console.log(element.state);
 
       if (element.state === "Safe") {
@@ -166,28 +166,28 @@ class Home extends Component {
         //   render={({ history }) => (
         <Marker
           properties={{
-            description: "<strong>" + element.name + "</strong>"
+            description: "<strong>" + element.name + "</strong>",
           }}
           coordinates={[element.lon, element.lat]}
           anchor="bottom"
-          onClick={mapWithEvt => {
+          onClick={(mapWithEvt) => {
             console.log("mouse click", mapWithEvt);
             // routeHistory.push("/monitor");
           }}
-          onMouseEnter={mapWithEvt => {
+          onMouseEnter={(mapWithEvt) => {
             console.log("mouse enter", mapWithEvt);
             this.setState({
               gotPopUp: {
                 lat: element.lat,
                 lon: element.lon,
-                description: "<strong>" + element.name + "</strong>"
-              }
+                description: "<strong>" + element.name + "</strong>",
+              },
             });
           }}
-          onMouseLeave={mapWithEvt => {
+          onMouseLeave={(mapWithEvt) => {
             console.log("mouse leave", mapWithEvt);
             this.setState({
-              gotPopUp: false
+              gotPopUp: false,
             });
           }}
         >
@@ -200,7 +200,7 @@ class Home extends Component {
               height: 1 + "em",
               backgroundColor: color,
 
-              borderRadius: 50 + "%"
+              borderRadius: 50 + "%",
             }}
           >
             {color}
@@ -222,7 +222,7 @@ class Home extends Component {
           style="mapbox://styles/mapbox/streets-v9"
           containerStyle={{
             height: "100vh",
-            width: "100vw"
+            width: "100vw",
           }}
           center={{ lat: 3.172788, lng: 101.719556 }}
           onClick={(map, e) => console.log("onClickMap!", e.lngLat)}
@@ -234,12 +234,12 @@ class Home extends Component {
               offset={{
                 "bottom-left": [12, 0],
                 bottom: [0, -10],
-                "bottom-right": [-12, -38]
+                "bottom-right": [-12, -38],
               }}
             >
               <div
                 dangerouslySetInnerHTML={{
-                  __html: this.state.gotPopUp.description
+                  __html: this.state.gotPopUp.description,
                 }}
               />
             </Popup>
@@ -276,12 +276,12 @@ class Home extends Component {
         headers: {
           "X-Secret":
             "UmNvalVjX09Td2JtY0NHTE9ST3AyNFdpbUdrYTpyTXRQaVNOVzNsTEhHaEREWDZSbFRmYjM0bVVh",
-          "Content-Type": "application/json"
-        }
+          "Content-Type": "application/json",
+        },
       }
     )
-      .then(response => response.json())
-      .then(result => {
+      .then((response) => response.json())
+      .then((result) => {
         this.xpandGetJWT(result.access_token, parameter, mode);
       });
   }
@@ -294,16 +294,16 @@ class Home extends Component {
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
-          Authorization: "Bearer" + " " + accessToken
+          Authorization: "Bearer" + " " + accessToken,
         },
         body: JSON.stringify({
           username: "hydrohealthondemand@gmail.com",
-          password: "teamh2o"
-        })
+          password: "teamh2o",
+        }),
       }
     )
-      .then(response => response.json())
-      .then(result => {
+      .then((response) => response.json())
+      .then((result) => {
         this.xpandGetData(result["X-IoT-JWT"], accessToken, parameter, data);
       });
   }
@@ -329,19 +329,19 @@ class Home extends Component {
       {
         headers: {
           Authorization: "Bearer" + " " + accessToken,
-          "X-IoT-JWT": jwt
-        }
+          "X-IoT-JWT": jwt,
+        },
       }
     )
-      .then(response => {
+      .then((response) => {
         console.log(response);
         return response.json();
       })
-      .then(result => {
+      .then((result) => {
         console.log("result: ", result[deviceIds]);
         this.setState({
           response: result[deviceIds],
-          isLoading: false
+          isLoading: false,
         });
       });
   }

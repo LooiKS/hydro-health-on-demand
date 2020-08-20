@@ -11,15 +11,15 @@ var CanvasJS = CanvasJSReact.CanvasJS;
 var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
 window.onload = function () {
-  console.log("loaded");
+  // console.log("loaded");
 
   window.addEventListener("DOMContentLoaded", (event) => {
-    console.log("cb loaded");
+    // console.log("cb loaded");
 
     ReactDOM.render({ HomeComp }, document.getElementById("root"));
-    console.log("cb loaded");
+    // console.log("cb loaded");
   });
-  console.log("loaded");
+  // console.log("loaded");
 };
 // const parameter = ['conductivity', 'oxygen', 'tds', 'turbidity', 'ph', 'temperature'];
 let loading = false;
@@ -27,12 +27,12 @@ let tempRes = [];
 class Monitor extends Component {
   componentDidUpdate(prevProps) {
     if (prevProps != this.props) {
-      console.log("monitor", this.props);
+      // console.log("monitor", this.props);
 
       var result = this.props.params.params;
       var temp = this.state.values;
 
-      console.log("temp", temp);
+      // console.log("temp", temp);
       temp.conductivity = this.changeProgressDial(
         this.state.values.conductivity,
         (result[xpandUrl.paramsDto.deviceIDs][0][unit.conductivity.key] /
@@ -81,7 +81,7 @@ class Monitor extends Component {
   }
 
   componentDidMount() {
-    console.log("mon", this.props);
+    // console.log("mon", this.props);
   }
 
   state = {
@@ -256,15 +256,15 @@ class Monitor extends Component {
     // this.get_xpand();
     loading = true;
     this.lookupInterval = setInterval(() => {
-      console.log("out");
+      // console.log("out");
       if (!loading) {
         loading = true;
         // this.get_xpand();
         // alert(JSON.stringify(this.chart.options.data[0].dataPoints));
         // this.chart.options.data[0].dataPoints = this.generateDataPoints();
-        // console.log("pts", this.chart.options.data[0].dataPoints);
+        // // console.log("pts", this.chart.options.data[0].dataPoints);
         // this.chart.render();
-        console.log("in");
+        // console.log("in");
       }
     }, 5000);
   }
@@ -291,7 +291,7 @@ class Monitor extends Component {
       xVal++;
     });
     // }
-    console.log("dps", dps);
+    // console.log("dps", dps);
     return dps;
   }
   // tempRes = this.state.response;
@@ -305,7 +305,7 @@ class Monitor extends Component {
     },
     axisX: {
       labelFormatter: (e) => {
-        console.log("thi", e.value);
+        // console.log("thi", e.value);
         if (
           Number.isInteger(e.value) &&
           e.value <= this.state.response.length &&
@@ -330,7 +330,7 @@ class Monitor extends Component {
     // var value[];
     // var chart = this.chart;
     // chart.render();
-    console.log("temp", Monitor, this.state.response);
+    // console.log("temp", Monitor, this.state.response);
     if (this.state.isLoading) {
       return <div>Loading Data of {this.props.locationSel}</div>;
     } else {
@@ -347,10 +347,10 @@ class Monitor extends Component {
               <h2 className="page-header">
                 Monitor Parameter Value at {this.props.locationSel}
               </h2>
-              <div className="upper_status_bar">
+              <div className="upper_status_bar row">
                 {/* <div
               // onClick={() => {
-              //   console.log("aaa");
+              //   // console.log("aaa");
               // }}
               > */}
                 <Horseshoe
@@ -366,7 +366,7 @@ class Monitor extends Component {
                   left_degree={this.state.values.conductivity.left}
                   right_degree={this.state.values.conductivity.right}
                   onClick={(res) => {
-                    console.log(res);
+                    // console.log(res);
                   }}
                 />
                 {/* </div> */}
@@ -406,20 +406,20 @@ class Monitor extends Component {
                   right_degree={this.state.values.tds.right}
                 />
               </div>
-              <div className="lower_status_bar">
-                <Horseshoe
-                  num="4"
-                  param={this.state.param[3]}
-                  unit={this.state.unit[3]}
-                  value={
-                    this.state.response[this.state.response.length - 1][
-                      unit.turbidity.key
-                    ]
-                  }
+              <div className="upper_status_bar row">
+                {/* <Horseshoe
+                  num="0"
+                  // param={this.state.param[3]}
+                  // unit={this.state.unit[3]}
+                  // value={
+                  //   this.state.response[this.state.response.length - 1][
+                  //     unit.turbidity.key
+                  //   ]
+                  // }
                   marker_degree={this.state.values.turbidity.marker}
                   left_degree={this.state.values.turbidity.left}
                   right_degree={this.state.values.turbidity.right}
-                />
+                /> */}
                 <Horseshoe
                   num="5"
                   param={this.state.param[4]}
@@ -533,13 +533,13 @@ class Monitor extends Component {
 
                 // onRef={ref => (this.chart = ref)}
               />
-              <Chart
+              {/* <Chart
                 data={this.state.response}
                 param={[
                   { param: unit.turbidity, color: "rgb(118, 139, 234)" }, //#ff00b5" },
                 ]}
                 // onRef={ref => (this.chart = ref)}
-              />
+              /> */}
               {/* <LineGraph
                 data={this.state.response}
                 dataSelected={[
@@ -681,14 +681,14 @@ class Monitor extends Component {
       }
     )
       .then((response) => {
-        console.log(response);
+        // console.log(response);
         return response.json();
       })
       .then((result) => {
-        console.log("*************************", result);
+        // console.log("*************************", result);
         var temp = this.state.values;
 
-        console.log("temp", temp);
+        // console.log("temp", temp);
         temp.conductivity = this.changeProgressDial(
           this.state.values.conductivity,
           (result[deviceIds][0].conductivity / 6000) * 100

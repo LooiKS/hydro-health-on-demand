@@ -27,7 +27,7 @@ class TextBorder extends Component {
         "%) ";
     }
 
-    console.log(_borderColor);
+    // console.log(_borderColor);
     return (
       <div
         style={{
@@ -38,7 +38,7 @@ class TextBorder extends Component {
           borderStyle: "solid",
           color: this.props.textColor,
           // "-webkit-text-stroke": "0.5px black",
-          margin: "1vh 2.5vw"
+          margin: "1vh 2.5vw",
         }}
       >
         <h4>{this.props.text}</h4>

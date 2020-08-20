@@ -25,63 +25,63 @@ window.onload = function () {
 let loading = false;
 let tempRes = [];
 class Monitor extends Component {
-  componentDidUpdate(prevProps) {
-    if (prevProps != this.props) {
-      // console.log("monitor", this.props);
+  update(prevProps) {
+    // if (prevProps != this.props) {
+    console.log("monitor", this.props);
 
-      var result = this.props.params.params;
-      var temp = this.state.values;
+    var result = this.props.params.params;
+    var temp = this.state.values;
 
-      // console.log("temp", temp);
-      temp.conductivity = this.changeProgressDial(
-        this.state.values.conductivity,
-        (result[xpandUrl.paramsDto.deviceIDs][0][unit.conductivity.key] /
-          6000) *
-          100
-      );
-      temp.oxygen = this.changeProgressDial(
-        this.state.values.oxygen,
-        (result[xpandUrl.paramsDto.deviceIDs][0][unit.oxygen.key] / 8.8) * 100
-      );
-      temp.tds = this.changeProgressDial(
-        this.state.values.tds,
-        (result[xpandUrl.paramsDto.deviceIDs][0][unit.tds.key] / 3500) * 100
-      );
-      temp.turbidity = this.changeProgressDial(
-        this.state.values.turbidity,
-        (result[xpandUrl.paramsDto.deviceIDs][0][unit.turbidity.key] / 50) * 100
-      );
-      temp.ph = this.changeProgressDial(
-        this.state.values.ph,
-        ((result[xpandUrl.paramsDto.deviceIDs][0][unit.ph.key] - 5) / 9) * 100
-      );
-      temp.temperature = this.changeProgressDial(
-        this.state.values.temperature,
-        ((result[xpandUrl.paramsDto.deviceIDs][0][unit.temperature.key] - 16) /
-          24) *
-          100
-      );
-      temp.ammonium = this.changeProgressDial(
-        this.state.values.ammonium,
-        (result[xpandUrl.paramsDto.deviceIDs][0][unit.ammonium.key] / 2.7) * 100
-      );
+    // console.log("temp", temp);
+    temp.conductivity = this.changeProgressDial(
+      this.state.values.conductivity,
+      (result[xpandUrl.paramsDto.deviceIDs][0][unit.conductivity.key] / 6000) *
+        100
+    );
+    temp.oxygen = this.changeProgressDial(
+      this.state.values.oxygen,
+      (result[xpandUrl.paramsDto.deviceIDs][0][unit.oxygen.key] / 8.8) * 100
+    );
+    temp.tds = this.changeProgressDial(
+      this.state.values.tds,
+      (result[xpandUrl.paramsDto.deviceIDs][0][unit.tds.key] / 3500) * 100
+    );
+    temp.turbidity = this.changeProgressDial(
+      this.state.values.turbidity,
+      (result[xpandUrl.paramsDto.deviceIDs][0][unit.turbidity.key] / 50) * 100
+    );
+    temp.ph = this.changeProgressDial(
+      this.state.values.ph,
+      ((result[xpandUrl.paramsDto.deviceIDs][0][unit.ph.key] - 5) / 9) * 100
+    );
+    temp.temperature = this.changeProgressDial(
+      this.state.values.temperature,
+      ((result[xpandUrl.paramsDto.deviceIDs][0][unit.temperature.key] - 16) /
+        24) *
+        100
+    );
+    temp.ammonium = this.changeProgressDial(
+      this.state.values.ammonium,
+      (result[xpandUrl.paramsDto.deviceIDs][0][unit.ammonium.key] / 2.7) * 100
+    );
 
-      // for (var i = value.length - 1; i >= 0; i--) {
-      // 	this.changeProgressDial(this.state.valuevalue[i]
-      // }
+    // for (var i = value.length - 1; i >= 0; i--) {
+    // 	this.changeProgressDial(this.state.valuevalue[i]
+    // }
 
-      // this.setState({values: temp});
-      this.setState({
-        values: temp,
-        response: result[xpandUrl.paramsDto.deviceIDs].reverse(),
-        isLoading: false,
-      });
-      loading = false;
-    }
+    // this.setState({values: temp});
+    this.setState({
+      values: temp,
+      response: result[xpandUrl.paramsDto.deviceIDs].reverse(),
+      isLoading: false,
+    });
+    loading = false;
+    // }
   }
 
   componentDidMount() {
-    // console.log("mon", this.props);
+    console.log("mon", this.props);
+    this.update();
   }
 
   state = {

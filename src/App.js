@@ -9,15 +9,15 @@ import logo from "./images/favicon.png";
 import { location } from "./variable.js";
 
 function App() {
-  fetch(
-    "http://localhost:8083/https://traffic.ls.hereapi.com/traffic/6.2/flow/json/8/134/86?apiKey=WjsBGdFvSK97byVwsm2rUHLMlPsGnEfcRgURoCv3Kzg"
-  )
-    .then((res) => {
-      return res.json();
-    })
-    .then((re) => {
-      // // console.log(re);
-    });
+  // fetch(
+  //   "http://localhost:8083/https://traffic.ls.hereapi.com/traffic/6.2/flow/json/8/134/86?apiKey=WjsBGdFvSK97byVwsm2rUHLMlPsGnEfcRgURoCv3Kzg"
+  // )
+  //   .then((res) => {
+  //     return res.json();
+  //   })
+  //   .then((re) => {
+  //     // // console.log(re);
+  //   });
   return <Main />;
 }
 

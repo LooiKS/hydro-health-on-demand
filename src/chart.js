@@ -8,43 +8,48 @@ class Chart extends Component {
   chart = "";
 
   componentWillUpdate() {
-    // console.log("chart render 1", this.chart.options.data);
     this.chart.options.data = this.generateData();
-    // console.log();
     this.chart.render();
   }
 
-  generateDataPoints(param) {
+  generateDataPoints({ key, unit, title }) {
     var xVal = 1;
     var dps = [];
-    // console.log("received", param);
     this.props.data.forEach((element) => {
-      // console.log("element[param]", element[param], element, param);
-      if (element[param])
+      console.log(element, element[key], key);
+      if (element[key]) {
         dps.push({
           x: xVal,
-          y: parseFloat(element[param], 10),
+          y: parseFloat(element[key], 10),
+          time: element.time_s.replace("T", " ").split(".")[0],
+          unit: unit,
+          param: title,
         });
-      xVal++;
+        xVal++;
+      }
     });
+    console.log(dps);
     return dps;
   }
 
   generateData() {
     let data = [];
-    // console.log("param", this.props.param);
-    this.props.param.forEach((element) => {
-      // console.log("loopchart", element, element.param);
+    this.props.param.forEach((element, index) => {
+      console.log(this.props.data[index], index);
       if (element)
         data.push({
           type: "spline",
-          xValueFormatString:
-            element.param.title + " (" + element.param.unit + ")",
+          // xValueFormatString:
+          //   element.param.title +
+          //   " (" +
+          //   element.param.unit +
+          //   ") " +
+          //   this.props.data[index]["time_s"],
           showInLegend: true,
           legendText: element.param.title,
           lineColor: element.color,
           markerColor: element.color,
-          dataPoints: this.generateDataPoints(element.param.key),
+          dataPoints: this.generateDataPoints(element.param),
         });
     });
     return data;
@@ -64,24 +69,29 @@ class Chart extends Component {
     axisX: {
       title: "Date",
       labelFormatter: (e) => {
-        // console.log("thi", e);
         if (
           Number.isInteger(e.value) &&
-          e.value <= this.props.data.length &&
+          e.value <= e.chart.data[0].dataPoints.length &&
           e.value > 0
           // &&
-          // this.props.data[e.value - 1][this.props.param]
+          // this.props.data[e.value - 1][this.props.param[0].param.key] !==
+          //   undefined &&
+          // this.props.data[e.value - 1][this.props.param[0].param.key] !== null
         ) {
-          // console.log("hi", this.props.data[e.value - 1], this.props.param);
-          return this.props.data[e.value - 1].time_s
-            .replace("T", " ")
-            .split(".")[0];
-          // let time = this.props.data[e.value - 1].time;
-          // return `${time.substr(0, 4)}-${time.substr(4, 2)}-${time.substr(
-          //   6,
-          //   2
-          // )} ${time.substr(8, 2)}:${time.substr(10, 2)}:${time.substr(12, 2)}`;
-        } else return "";
+          //   console.log(this.props.data[e.value - 1], this.props.param);
+          //   return this.props.data[e.value - 1].time_s
+          //     .replace("T", " ")
+          //     .split(".")[0];
+          //   // let time = this.props.data[e.value - 1].time;
+          //   // return `${time.substr(0, 4)}-${time.substr(4, 2)}-${time.substr(
+          //   //   6,
+          //   //   2
+          //   // )} ${time.substr(8, 2)}:${time.substr(10, 2)}:${time.substr(12, 2)}`;
+          // } else return "";
+          console.log(e.chart.data[0].dataPoints, e.value);
+          return e.chart.data[0].dataPoints[e.value - 1].time;
+        }
+        return "";
       },
     },
     axisY: {
@@ -93,15 +103,12 @@ class Chart extends Component {
           : this.props.param[0].param.unit,
     },
     data: this.generateData(),
+    toolTip: {
+      content: "{param}: {y} {unit} ({time})",
+    },
   };
 
   render() {
-    // console.log(
-    //   "chart render",
-    //   this.props.param
-    //   // unit[this.props.param.param].title,
-    //   // this.props.param.param
-    // );
     return (
       <div style={{ width: "90vw", display: "inline-flex" }}>
         <hr></hr>

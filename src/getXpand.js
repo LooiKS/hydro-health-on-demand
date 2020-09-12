@@ -51,15 +51,15 @@ async function xpandGetData(jwt, accessToken, mode) {
   var endDate =
     today.getFullYear() +
     "-" +
-    (today.getMonth() + 1) +
+    (today.getMonth() + 1).toString().padStart(2, "0") +
     "-" +
-    today.getDate() +
+    today.getDate().toString().padStart(2, "0") +
     "%20" +
-    today.getHours() +
+    today.getHours().toString().padStart(2, "0") +
     "%3A" +
-    today.getMinutes() +
+    today.getMinutes().toString().padStart(2, "0") +
     "%3A" +
-    today.getSeconds();
+    today.getSeconds().toString().padStart(2, "0");
 
   return await fetch(
     baseURL +

@@ -107,7 +107,7 @@ export const xpandUrl = {
   paramsDto: {
     eventName: "WaterQuality",
     // deviceIDs: "20717",
-    deviceIDs: "27059",
+    deviceIDs: "27432",
     noOfEvents: "10",
     zoneId: "Asia%2FKuala_Lumpur",
     eventParam:
@@ -118,7 +118,7 @@ export const xpandUrl = {
   locationDto: {
     eventName: "DeviceSense",
     // deviceIDs: "20717",
-    deviceIDs: "27059",
+    deviceIDs: "27432",
     noOfEvents: "1",
     zoneId: "Asia%2FKuala_Lumpur",
     eventParam: "latitude, longitude",

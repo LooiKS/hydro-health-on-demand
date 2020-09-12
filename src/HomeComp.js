@@ -124,8 +124,8 @@ export const HomeComp = (props) => {
         // text: indicate(40, "text")"text"
       },
       {
-        lat: 1.499313,
-        lon: 103.685027,
+        // lat: 1.499313,
+        // lon: 103.685027,
         name: "Sungai Skudai",
         type: "scattermapbox",
         mode: "markers",
@@ -436,14 +436,16 @@ export const HomeComp = (props) => {
     let temp = location;
     temp.location.forEach((element) => {
       if (element.name === "Sungai Skudai") {
-        if (element.lat === null) {
-          // console.log("Sungai Skudai", props);
-          element.lat = 3.172788;
-          //            props.location[xpandUrl.paramsDto.deviceIDs][0].latitude;
-          element.lon = 101.719556;
-          //            props.location[xpandUrl.paramsDto.deviceIDs][0].longitude;
+        if (!element.lat) {
+          element.lat = 1.499313;
+          element.lon = 103.685027;
+          if (props.location.length > 0) {
+            element.lat =
+              props.location[xpandUrl.paramsDto.deviceIDs][0].latitude;
+            element.lon =
+              props.location[xpandUrl.paramsDto.deviceIDs][0].longitude;
+          }
         }
-        // console.log("Sungai Skudai", params);
 
         element.state =
           params[xpandUrl.paramsDto.deviceIDs][0][unit.wqi.key] >= 40
